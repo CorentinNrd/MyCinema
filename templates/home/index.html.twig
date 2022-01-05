@@ -9,38 +9,24 @@
 
 {% block body %}
     <header>
-        <h1>
-            MyCinema
-                            
-                    
-        </h1>
-        <nav class="menu">
-            <tr>
-                {% if is_granted('ROLE_USER') %}
-                <td>
-                    <a id="movies" href="movies.php">Films</a>
-                </td>
-                <td>
-                    <a id="projection" href="projection.php">Ce soir</a>
-                </td>
-                <td>
-                    <p class="p-3">Bonjour {{ app.user.email }}!</p> 
-                </td>
-                <td>
-                    <a href="/profil">profil</a> 
-                </td>
-                <td>
-                    <a href="/logout">Déconnexion</a>
-                </td>
-                {% else %}
-                <td>
-                    <a id="projection" href="/login">Connexion</a>
-                </td>
-                <td>
-                    <a id="projection" href="/register">Inscription</a>
-                </td>
-                {% endif %}
-                </tr>
+        <h1 class="text-center">MyCinema</h1>
+        <nav id="navbar" class="d-flex justify-content-center">
+            {% if is_granted('ROLE_USER') %}
+            <ul>
+                <li><a href="#">Films</a></li>
+                <li><a href="#">Ce soir</a></li>
+                <li>Bonjour {{ app.user.email }}!</li>
+                <li><a href="/profil">profil</a></li>
+                <li><a href="/logout">Déconnexion</a></li>
+            </ul>
+            {% else %}
+            <ul>
+                <li><a id="movies" href="#">Films</a></li>
+                <li><a id="projection" href="#">Ce soir</a></li>
+                <li><a id="projection" href="/login">Connexion</a></li>
+                <li><a id="projection" href="/register">Inscription</a></li>
+            </ul>
+            {% endif %}
         </nav>
     </header>
 {% endblock %}
